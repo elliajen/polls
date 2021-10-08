@@ -1,17 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>코로나 백신 설문조사</title>
+    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">
 </head>
 <body>
-    <h2>설문 목록</h2>
-    <ul>
-    {% for question in question_list %}
-        <li>
-            <a href="/poll/{{ question.id }}">{{ question.question_text }}</a>
-        </li>
-    {% endfor %}
-    </ul>
+    <div id="container">
+        <section>
+            <h2>설문 목록</h2>
+            <ul>
+            {% for question in question_list %}
+                <li>
+                    <a href="{% url 'poll:detail' question.id %}">{{ question.question_text }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+    </div>
 </body>
 </html>
